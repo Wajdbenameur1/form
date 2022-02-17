@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            inscription
+        </title>
+        <link rel="stylesheet" type="text/css" href="form-1.css">
+    </head>
+    <body  onload='document.form1.text1.focus()'>
+        <div class="total">
+            <h1>
+             inscription
+            </h1>
+            <div class="box">
+            <form name="form" action="#" onsubmit="validate()">
+                <p>first name :</p>
+                <input type="text" name="text1" value="first name" > 
+                <br>
+                <p>last name :</p>
+                <input type="text" name="text2" value="last name"> 
+                <br>
+                <p>phone number :</p>
+                <input type="tel" name ="telephone1" value="phone number"> 
+                <br>
+                <p>email :</p>
+                <input type="email" name="email1" value="email">
+                <br>
+                <p>password :</p>
+                <input type="password" name="password1"  id="ps" value="password">
+                <p>confirmation password :</p> 
+                <input type="password" name="confpassword" value="confirmation password">
+                <br>
+                <p>gender :</p>
+                <div class="gender">
+                <p>male</p>
+                <input type="radio" id="radio1" name="radio1" value="male" onchange="Change()">
+                <label for="genderChoice1">male</label>
+                <p>female</p>
+                <input type="radio" id="radio2"name="radio2" value="female" onchange="Change()">
+                <label for="genderChoice2">female/label>
+                </div>
+                <p>date of birth</p> 
+                <div class="gender">     
+                    <input type="number" name="date1" value="day">   
+                    <input type="number" name="date2" value="month">
+                    <input type="number" name="date3" value="year">
+                </div> 
+                 <br>
+                <input type="submit" onclick="imputsValidation()">    
+            </form>
+            <div id="message">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" >A <b>lowercase</b> letter</p>
+                <p id="capital" >A <b>capital (uppercase)</b> letter</p>
+                <p id="number" >A <b>number</b></p>
+                <p id="spacial"> <b>spacial characters</b></p>
+                <p id="minimum"><b>minimum 8</b></p>
+              </div>
+          </div>
+        </div>
+        <script src="form-1.js"></script>
+    </body>
+</html>
