@@ -28,3 +28,12 @@ input{
       display: flex;
       justify-content: center;
   }
+table{
+    color: white;
+    background-color: gray;
+    border: solid;
+    width:100%;
+}
+.ftr{
+    color:pink;
+}

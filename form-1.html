@@ -14,21 +14,21 @@
             <div class="box">
             <form name="form" action="#" onsubmit="validate()">
                 <p>first name :</p>
-                <input type="text" name="text1" value="first name" > 
+                <input type="text" name="text1" id="text1" value="first name" > 
                 <br>
                 <p>last name :</p>
-                <input type="text" name="text2" value="last name"> 
+                <input type="text" name="text2" id="text2" value="last name"> 
                 <br>
                 <p>phone number :</p>
-                <input type="tel" name ="telephone1" value="phone number"> 
+                <input type="tel" name ="telephone1" id ="telephone1" value="phone number"> 
                 <br>
                 <p>email :</p>
-                <input type="email" name="email1" value="email">
+                <input type="email" name="email1" id="email1" value="email">
                 <br>
                 <p>password :</p>
-                <input type="password" name="password1"  id="ps" value="password">
+                <input type="password" name="password1"  id="password1" >
                 <p>confirmation password :</p> 
-                <input type="password" name="confpassword" value="confirmation password">
+                <input type="password" name="confpassword" id="confpassword" >
                 <br>
                 <p>gender :</p>
                 <div class="gender">
@@ -41,13 +41,29 @@
                 </div>
                 <p>date of birth</p> 
                 <div class="gender">     
-                    <input type="number" name="date1" value="day">   
-                    <input type="number" name="date2" value="month">
-                    <input type="number" name="date3" value="year">
+                    <input type="number" name="date1" id="date1" value="day">   
+                    <input type="number" name="date2" id="date2" value="month">
+                    <input type="number" name="date3" id="date3" value="year">
                 </div> 
                  <br>
-                <input type="submit" onclick="imputsValidation()">    
+                <input type="submit" id="submit" onclick="imputsValidation();"> 
+                <button onclick="display();">add</button>
+                <button onclick="editHtmlTbleSelectedRow();">edit</button>
+                <button onclick="removeSelectedRow();">remove</button>
             </form>
+            <table id="table">
+                <tr class="ftr">
+                    <th>first name</th>
+                    <th>last name</th>
+                    <th>phone number</th>
+                    <th>email</th>
+                    <th>password</th>
+                    <th>password confirmation</th>
+                    <th>gender</th>
+                    <th>birthday</th>
+                </tr>
+            </table>
+
             <div id="message">
                 <h3>Password must contain the following:</h3>
                 <p id="letter" >A <b>lowercase</b> letter</p>

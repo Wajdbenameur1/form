@@ -37,17 +37,18 @@ function validate()
         return false;
     }
     return(true);
+
 }
 function imputsValidation()
 {
     var numbers = /^[0-9]+$/ ;
     var letters = /^[A-Za-z]+$/;
     var pss = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-    var pw1 = document.getElementById("password1");  
-   var pw2 = document.getElementById("confpassword");  
-   var dt1 = document.getElementById("date1") ;
-   var dt2 = document.getElementById("date2");
-   var dt3 = document.getElementById("date3");
+    var pw1 = document.getElementById("password1").value;  
+   var pw2 = document.getElementById("confpassword").value;  
+   var dt1 = document.getElementById("date1").value ;
+   var dt2 = document.getElementById("date2").value;
+   var dt3 = document.getElementById("date3").value;
     var sp = 0;
     if(document.form.text1.value.match(numbers)){
         alert("please enter only alphabet!");
@@ -82,7 +83,7 @@ function imputsValidation()
     }
     if( dt3 > 2004){
         alert("you can't enter!");
-        return false;
+         return false;
     }
     return (true) ;
 }
@@ -96,7 +97,102 @@ if(document.getElementById("radio1").checked == true)
         {
             document.getElementById("radio1").checked = false;
         }
-}   
+} 
+
+function display()
+{ 
+    if(imputsValidation())
+    {
+        var newRow = table.insertRow(table.length);
+        var cell1 = newRow.insertCell(0) ;
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+        var cell5 = newRow.insertCell(4);
+        var cell6 = newRow.insertCell(5);
+        var cell7 = newRow.insertCell(6);
+        var cell8 = newRow.insertCell(7);
+        var text1 = document.getElementById("text1").value;
+        var text2 = document.getElementById("text2").value;
+        var telephone1 = document.getElementById("telephone1").value;
+        var password1 = document.getElementById("password1").value;
+        var confpassword = document.getElementById("confpassword").value;
+        var date1 = document.getElementById("date1").value;
+        var date2 = document.getElementById("date2").value;
+        var date2 = document.getElementById("date3").value ; 
+        var email1 = document.getElementById("email1").value;
+        cell1.innerHTML= text1;
+        cell2.innerHTML = text2;
+        cell3.innerHTML = telephone1;
+        cell4.innerHTML = email1;
+        cell5.innerHTML = password1  ;
+        cell6.innerHTML = confpassword ;
+        cell8.innerHTML= date1;
+        cell8.innerHTML = date2 ;
+        cell8.innerHTML = date3 ; 
+        selectRow();   
+}
+}
+function selectRow()
+{
+    for(var i = 1; i < table.rows.length; i++)
+    {
+        table.rows[i].onclick = function()
+        {
+         
+          rIndex = this.rowIndex;
+          document.getElementById("text1").value = this.cells[0].innerHTML;
+          document.getElementById("text2").value = this.cells[1].innerHTML;
+          document.getElementById("telephone1").value = this.cells[2].innerHTML;
+          document.getElementById("email1").value = this.cells[3].innerHTML;
+          document.getElementById("password1").value = this.cells[4].innerHTML;
+          document.getElementById("confpassword").value = this.cells[5].innerHTML;
+          document.getElementById("date1").value = this.cells[7].innerHTML;
+          document.getElementById("date2").value = this.cells[7].innerHTML;
+          document.getElementById("date3").value = this.cells[7].innerHTML;
+          
+          
+        };
+    }
+
+ selectRow();
+}
+function editHtmlTbleSelectedRow()
+            {
+                var text1 = document.getElementById("text1").value;
+                var text2 = document.getElementById("text2").value;
+                var telephone1 = document.getElementById("telephone1").value;
+                var password1 = document.getElementById("password1").value;
+                var confpassword = document.getElementById("confpassword").value;
+                var date1 = document.getElementById("date1").value;
+                var date2 = document.getElementById("date2").value;
+                var date2 = document.getElementById("date3").value ; 
+                var email1 = document.getElementById("email1").value;
+               if(!imputsValidation()){
+                table.rows[rIndex].cells[0].innerHTML = text1;
+                table.rows[rIndex].cells[1].innerHTML = text2;
+                table.rows[rIndex].cells[2].innerHTML = telephone1;
+                table.rows[rIndex].cells[5].innerHTML = email1;
+                table.rows[rIndex].cells[3].innerHTML = password1;
+                table.rows[rIndex].cells[4].innerHTML = confpassword;
+                table.rows[rIndex].cells[7].innerHTML = date1;
+                table.rows[rIndex].cells[7].innerHTML = tate2;
+                table.rows[rIndex].cells[7].innerHTML = date3;
+              }
+            }
+function removeSelectedRow()
+     {
+        table.deleteRow(rIndex);
+        document.getElementById("text1").value = "";
+        document.getElementById("text2").value = "";
+        document.getElementById("telephone1").value = "";
+        document.getElementById("email1").value = "";
+        document.getElementById("password1").value = "";
+        document.getElementById("confpassword").value = "";
+        document.getElementById("date1").value = "";
+        document.getElementById("date2").value = "";
+        document.getElementById("date3").value = "";
+    }            
 
         
       
