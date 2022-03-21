@@ -14,16 +14,16 @@
             <div class="box">
             <form name="form" action="#" onsubmit="validate()">
                 <p>first name :</p>
-                <input type="text" name="text1" id="text1" value="first name" > 
+                <input type="text" name="text1" id="text1" placeholder="first name"> 
                 <br>
                 <p>last name :</p>
-                <input type="text" name="text2" id="text2" value="last name"> 
+                <input type="text" name="text2" id="text2" placeholder="last name"> 
                 <br>
                 <p>phone number :</p>
-                <input type="tel" name ="telephone1" id ="telephone1" value="phone number"> 
+                <input type="tel" name ="telephone1" id ="telephone1" placeholder="phone number" > 
                 <br>
                 <p>email :</p>
-                <input type="email" name="email1" id="email1" value="email">
+                <input type="email" name="email1" id="email1" placeholder="email">
                 <br>
                 <p>password :</p>
                 <input type="password" name="password1"  id="password1" >
@@ -33,25 +33,25 @@
                 <p>gender :</p>
                 <div class="gender">
                 <p>male</p>
-                <input type="radio" id="radio1" name="radio1" value="male" onchange="Change()">
+                <input type="radio" id="radio1" name="radio1" value="male">
                 <label for="genderChoice1">male</label>
                 <p>female</p>
-                <input type="radio" id="radio2"name="radio2" value="female" onchange="Change()">
-                <label for="genderChoice2">female/label>
+                <input type="radio" id="radio1"name="radio1" value="female">
+                <label for="genderChoice2">female</label>
                 </div>
                 <p>date of birth</p> 
                 <div class="gender">     
-                    <input type="number" name="date1" id="date1" value="day">   
-                    <input type="number" name="date2" id="date2" value="month">
-                    <input type="number" name="date3" id="date3" value="year">
+                    <input type="number" name="date1" id="date1" >   
+                    <input type="number" name="date2" id="date2" >
+                    <input type="number" name="date3" id="date3" >
                 </div> 
                  <br>
                 <input type="submit" id="submit" onclick="imputsValidation();"> 
-                <button onclick="display();">add</button>
-                <button onclick="editHtmlTbleSelectedRow();">edit</button>
-                <button onclick="removeSelectedRow();">remove</button>
+                <button onclick="display(event);">add</button>
+                <button onclick="editHtmlTbleSelectedRow(event);">edit</button>
+                <button onclick="removeSelectedRow(event);">remove</button>
             </form>
-            <table id="table">
+            <table id="table" border="1">
                 <tr class="ftr">
                     <th>first name</th>
                     <th>last name</th>
@@ -60,7 +60,9 @@
                     <th>password</th>
                     <th>password confirmation</th>
                     <th>gender</th>
-                    <th>birthday</th>
+                    <th>day</th>
+                    <th>month</th>
+                    <th>year</th>
                 </tr>
             </table>
 

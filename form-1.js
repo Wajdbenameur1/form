@@ -1,3 +1,5 @@
+var rIndex,
+    table = document.getElementById("table");
 function validate()
 {
     if(document.form.text1.value == ""){
@@ -50,6 +52,8 @@ function imputsValidation()
    var dt2 = document.getElementById("date2").value;
    var dt3 = document.getElementById("date3").value;
     var sp = 0;
+    const d =["1","3","5","7","8","10","12"];
+    const dt =["4","6","9","11"]
     if(document.form.text1.value.match(numbers)){
         alert("please enter only alphabet!");
         return false;
@@ -73,11 +77,24 @@ function imputsValidation()
         alert("incorrect confirmation!");
         return false;
     }
-    if(document.form.date1.value.length != 2 && dt1 > 31){
+    if( d.includes(dt2) && dt1 > 30){
         alert("wrong date!");
         return false;
     }
-    if(document.form.date2.value.length != 2 && dt2 > 12){
+    if(dt2 == 2 && dt1 > 29 && dt3 % 4 == 0){
+        alert("wrong date!");
+        return false;
+    }
+    if(dt2 == 2 && dt1>28 && dt3 % 4 != 0){
+        alert("wrong date!");
+        return false;
+    }
+    if(dt.includes(dt2) && dt1 > 30){
+        alert("wrong date!");
+        return false;
+    }
+    
+    if( dt2 > 12){
         alert("wrong date!");
         return false;
     }
@@ -87,20 +104,8 @@ function imputsValidation()
     }
     return (true) ;
 }
-function Change()
-{
-if(document.getElementById("radio1").checked == true)
-        {
-            document.getElementById("radio2").checked = false;
-        }
-        else
-        {
-            document.getElementById("radio1").checked = false;
-        }
-} 
-
-function display()
-{ 
+function display(event)
+{ event.preventDefault()
     if(imputsValidation())
     {
         var newRow = table.insertRow(table.length);
@@ -112,14 +117,17 @@ function display()
         var cell6 = newRow.insertCell(5);
         var cell7 = newRow.insertCell(6);
         var cell8 = newRow.insertCell(7);
+        var cell9 = newRow.insertCell(8);
+        var cell10 =  newRow.insertCell(9);
         var text1 = document.getElementById("text1").value;
         var text2 = document.getElementById("text2").value;
         var telephone1 = document.getElementById("telephone1").value;
         var password1 = document.getElementById("password1").value;
         var confpassword = document.getElementById("confpassword").value;
+        var radio1 = document.getElementById("radio1").value;
         var date1 = document.getElementById("date1").value;
         var date2 = document.getElementById("date2").value;
-        var date2 = document.getElementById("date3").value ; 
+        var date3 = document.getElementById("date3").value ; 
         var email1 = document.getElementById("email1").value;
         cell1.innerHTML= text1;
         cell2.innerHTML = text2;
@@ -127,14 +135,15 @@ function display()
         cell4.innerHTML = email1;
         cell5.innerHTML = password1  ;
         cell6.innerHTML = confpassword ;
-        cell8.innerHTML= date1;
-        cell8.innerHTML = date2 ;
-        cell8.innerHTML = date3 ; 
-        selectRow();   
+        cell7.innerHTML = radio1;
+        cell8.innerHTML = date1 ;
+        cell9.innerHTML = date2;
+        cell10.innerHTML = date3;
+          selectRow();
 }
 }
 function selectRow()
-{
+{     
     for(var i = 1; i < table.rows.length; i++)
     {
         table.rows[i].onclick = function()
@@ -147,18 +156,20 @@ function selectRow()
           document.getElementById("email1").value = this.cells[3].innerHTML;
           document.getElementById("password1").value = this.cells[4].innerHTML;
           document.getElementById("confpassword").value = this.cells[5].innerHTML;
-          document.getElementById("date1").value = this.cells[7].innerHTML;
-          document.getElementById("date2").value = this.cells[7].innerHTML;
-          document.getElementById("date3").value = this.cells[7].innerHTML;
+         document.getElementById("radio1").value = this.cells[6].innerHTML;
+         document.getElementById("date1").value = this.cells[7].innerHTML;
+         document.getElementById("date2").value = this.cells[8].innerHTML;
+         document.getElementById("date3").value = this.cells[9].innerHTML;
           
           
         };
     }
-
- selectRow();
 }
-function editHtmlTbleSelectedRow()
+ selectRow();
+
+function editHtmlTbleSelectedRow(event)
             {
+                event.preventDefault()
                 var text1 = document.getElementById("text1").value;
                 var text2 = document.getElementById("text2").value;
                 var telephone1 = document.getElementById("telephone1").value;
@@ -166,22 +177,26 @@ function editHtmlTbleSelectedRow()
                 var confpassword = document.getElementById("confpassword").value;
                 var date1 = document.getElementById("date1").value;
                 var date2 = document.getElementById("date2").value;
-                var date2 = document.getElementById("date3").value ; 
+                var date3 = document.getElementById("date3").value ; 
                 var email1 = document.getElementById("email1").value;
-               if(!imputsValidation()){
+               if(imputsValidation()){
                 table.rows[rIndex].cells[0].innerHTML = text1;
                 table.rows[rIndex].cells[1].innerHTML = text2;
                 table.rows[rIndex].cells[2].innerHTML = telephone1;
-                table.rows[rIndex].cells[5].innerHTML = email1;
-                table.rows[rIndex].cells[3].innerHTML = password1;
-                table.rows[rIndex].cells[4].innerHTML = confpassword;
+                table.rows[rIndex].cells[3].innerHTML = email1;
+                table.rows[rIndex].cells[4].innerHTML = password1;
+                table.rows[rIndex].cells[5].innerHTML = confpassword;
                 table.rows[rIndex].cells[7].innerHTML = date1;
-                table.rows[rIndex].cells[7].innerHTML = tate2;
-                table.rows[rIndex].cells[7].innerHTML = date3;
+                table.row[rIndex].cells[8].innerHTML = date2;
+                table.row[rIndex].cells[9].innerHTML = date3 ;
+                
+                
+              
               }
+              
             }
-function removeSelectedRow()
-     {
+function removeSelectedRow(event)
+     {event.preventDefault()
         table.deleteRow(rIndex);
         document.getElementById("text1").value = "";
         document.getElementById("text2").value = "";

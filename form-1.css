@@ -17,6 +17,7 @@ p{
     justify-content: center;
     justify-items: center;
     text-align: center;
+    overflow: hidden;
 }
 input{
     width: 300px;
@@ -29,11 +30,13 @@ input{
       justify-content: center;
   }
 table{
-    color: white;
-    background-color: gray;
+    color: black;
+    background-color: white;
     border: solid;
     width:100%;
 }
 .ftr{
-    color:pink;
+    color:blue;
 }
+tr{transition:all .25s ease-in-out}
+tr:hover{background-color:#EEE;cursor: pointer}
